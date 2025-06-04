@@ -54,13 +54,17 @@ namespace SkyPick
                             var role = user.Role;
                             if (role.Equals("admin"))
                             {
-                                AdminMainWindow amw = new AdminMainWindow(this);
-                                amw.Show();
+                                Hide();
+                                AdminMainWindow amw = new AdminMainWindow(user);
+                                amw.ShowDialog();
+                                Close();
                             }
                             else
                             {
-                                PassengerMainWindow pmw = new PassengerMainWindow(this);
-                                pmw.Show();
+                                Hide();
+                                PassengerMainWindow pmw = new PassengerMainWindow(user);
+                                pmw.ShowDialog();
+                                Close();
                             }
                         }
 
@@ -90,15 +94,6 @@ namespace SkyPick
             {
                 return false;
             }
-        }
-
-
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            if (tbPassword.PasswordChar != '\0')
-                tbPassword.PasswordChar = '\0';
-            else
-                tbPassword.PasswordChar = '*';
         }
 
         private void tbEmail_TextChanged_1(object sender, EventArgs e)
@@ -131,6 +126,19 @@ namespace SkyPick
             Register register = new Register();
             register.ShowDialog();
             Close();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tbPassword.PasswordChar != '\0')
+                tbPassword.PasswordChar = '\0';
+            else
+                tbPassword.PasswordChar = '*';
         }
     }
 }

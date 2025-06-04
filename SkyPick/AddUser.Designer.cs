@@ -53,11 +53,11 @@
             this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnSaveChanges.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
-            this.btnSaveChanges.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveChanges.Font = new System.Drawing.Font("Segoe UI", 15.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveChanges.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.btnSaveChanges.Location = new System.Drawing.Point(586, 274);
+            this.btnSaveChanges.Location = new System.Drawing.Point(791, 406);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(202, 69);
+            this.btnSaveChanges.Size = new System.Drawing.Size(202, 73);
             this.btnSaveChanges.TabIndex = 9;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.UseVisualStyleBackColor = false;
@@ -67,7 +67,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(162, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(166, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(110, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -80,7 +80,7 @@
             this.lblAddUser.AutoSize = true;
             this.lblAddUser.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.lblAddUser.Location = new System.Drawing.Point(275, 0);
+            this.lblAddUser.Location = new System.Drawing.Point(296, 26);
             this.lblAddUser.Margin = new System.Windows.Forms.Padding(50);
             this.lblAddUser.Name = "lblAddUser";
             this.lblAddUser.Size = new System.Drawing.Size(278, 81);
@@ -89,7 +89,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -103,7 +103,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lblFirstName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbFirstName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbPassword, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 87);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(114, 166);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -111,17 +111,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(566, 351);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(612, 421);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // cbRoles
             // 
+            this.cbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRoles.FormattingEnabled = true;
             this.cbRoles.Items.AddRange(new object[] {
             "Admin",
             "Passenger"});
-            this.cbRoles.Location = new System.Drawing.Point(286, 283);
+            this.cbRoles.Location = new System.Drawing.Point(309, 339);
             this.cbRoles.Name = "cbRoles";
             this.cbRoles.Size = new System.Drawing.Size(255, 33);
             this.cbRoles.TabIndex = 13;
@@ -129,7 +130,7 @@
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(286, 143);
+            this.tbEmail.Location = new System.Drawing.Point(309, 171);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(255, 30);
             this.tbEmail.TabIndex = 11;
@@ -137,7 +138,7 @@
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(286, 73);
+            this.tbLastName.Location = new System.Drawing.Point(309, 87);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(255, 30);
             this.tbLastName.TabIndex = 10;
@@ -147,7 +148,7 @@
             this.lblRole.AutoSize = true;
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.lblRole.Location = new System.Drawing.Point(3, 280);
+            this.lblRole.Location = new System.Drawing.Point(3, 336);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(63, 35);
             this.lblRole.TabIndex = 8;
@@ -158,7 +159,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.lblPassword.Location = new System.Drawing.Point(3, 210);
+            this.lblPassword.Location = new System.Drawing.Point(3, 252);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(120, 35);
             this.lblPassword.TabIndex = 6;
@@ -169,7 +170,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.lblEmail.Location = new System.Drawing.Point(3, 140);
+            this.lblEmail.Location = new System.Drawing.Point(3, 168);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(75, 35);
             this.lblEmail.TabIndex = 4;
@@ -180,7 +181,7 @@
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.lblLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.lblLastName.Location = new System.Drawing.Point(3, 70);
+            this.lblLastName.Location = new System.Drawing.Point(3, 84);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(133, 35);
             this.lblLastName.TabIndex = 2;
@@ -200,7 +201,7 @@
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbFirstName.Location = new System.Drawing.Point(286, 3);
+            this.tbFirstName.Location = new System.Drawing.Point(309, 3);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(255, 30);
             this.tbFirstName.TabIndex = 9;
@@ -208,7 +209,7 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(286, 213);
+            this.tbPassword.Location = new System.Drawing.Point(309, 255);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(255, 30);
@@ -221,9 +222,9 @@
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.btnCancel.Location = new System.Drawing.Point(586, 369);
+            this.btnCancel.Location = new System.Drawing.Point(791, 515);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(202, 69);
+            this.btnCancel.Size = new System.Drawing.Size(202, 72);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -233,12 +234,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1005, 609);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblAddUser);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSaveChanges);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddUser";
             this.Text = "AddUser";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

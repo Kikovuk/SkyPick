@@ -12,21 +12,64 @@ namespace SkyPick
 {
     public partial class PassengerMainWindow : Form
     {
-
-        private readonly Login _login;
+        private readonly User currentUser;
         public PassengerMainWindow()
         {
             InitializeComponent();
         }
-        public PassengerMainWindow(Login login)
+        public PassengerMainWindow(User currentUser)
         {
             InitializeComponent();
-            _login = login;
+            this.currentUser = currentUser;
         }
 
-        private void PassengerMainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnReserve_Click(object sender, EventArgs e)
         {
-            _login.Close();
+
+        }
+
+        private void btnMyReservation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeactivate_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to deactivate your account?", "Confirm Deactivation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                using (var db = new SkyPickEntities())
+                {
+                    var user = db.User.FirstOrDefault(q => q.UserID == currentUser.UserID);
+                    if (user != null)
+                    {
+                        user.IsActive = false;
+                        db.SaveChanges();
+                    }
+                }
+
+                MessageBox.Show("Your account has been deactivated.");
+                Application.Exit();
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ResetPassword resetPassword = new ResetPassword(currentUser);
+            resetPassword.ShowDialog();
+            Close();
         }
     }
 }

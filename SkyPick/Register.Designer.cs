@@ -41,11 +41,11 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.lblConfirmPassword = new System.Windows.Forms.Label();
-            this.lblFirstName = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.lblConfirmPassword = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -58,7 +58,7 @@
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(218, 369);
+            this.btnRegister.Location = new System.Drawing.Point(316, 443);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(146, 69);
             this.btnRegister.TabIndex = 9;
@@ -73,7 +73,7 @@
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.btnCancel.Location = new System.Drawing.Point(448, 369);
+            this.btnCancel.Location = new System.Drawing.Point(546, 443);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(146, 69);
             this.btnCancel.TabIndex = 13;
@@ -83,7 +83,7 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(241, 99);
+            this.tbEmail.Location = new System.Drawing.Point(268, 117);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(167, 22);
             this.tbEmail.TabIndex = 14;
@@ -91,7 +91,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(241, 147);
+            this.tbPassword.Location = new System.Drawing.Point(268, 174);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(167, 22);
@@ -100,7 +100,7 @@
             // 
             // tbConfirmPassword
             // 
-            this.tbConfirmPassword.Location = new System.Drawing.Point(241, 195);
+            this.tbConfirmPassword.Location = new System.Drawing.Point(268, 231);
             this.tbConfirmPassword.Name = "tbConfirmPassword";
             this.tbConfirmPassword.PasswordChar = '*';
             this.tbConfirmPassword.Size = new System.Drawing.Size(167, 22);
@@ -109,14 +109,14 @@
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(241, 3);
+            this.tbFirstName.Location = new System.Drawing.Point(268, 3);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(167, 22);
             this.tbFirstName.TabIndex = 17;
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(241, 51);
+            this.tbLastName.Location = new System.Drawing.Point(268, 60);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(167, 22);
             this.tbLastName.TabIndex = 18;
@@ -125,7 +125,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(174, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(272, 43);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(110, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -137,7 +137,7 @@
             this.lblRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRegister.AutoSize = true;
             this.lblRegister.Font = new System.Drawing.Font("Segoe UI", 46F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegister.Location = new System.Drawing.Point(288, 1);
+            this.lblRegister.Location = new System.Drawing.Point(387, 14);
             this.lblRegister.Margin = new System.Windows.Forms.Padding(50);
             this.lblRegister.Name = "lblRegister";
             this.lblRegister.Size = new System.Drawing.Size(317, 102);
@@ -148,9 +148,9 @@
             // 
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(700, 0);
+            this.pictureBox4.Location = new System.Drawing.Point(897, 0);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 450);
+            this.pictureBox4.Size = new System.Drawing.Size(100, 598);
             this.pictureBox4.TabIndex = 21;
             this.pictureBox4.TabStop = false;
             // 
@@ -160,7 +160,7 @@
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 450);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 598);
             this.pictureBox3.TabIndex = 22;
             this.pictureBox3.TabStop = false;
             // 
@@ -180,7 +180,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tbConfirmPassword, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.tbPassword, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tbEmail, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(174, 120);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(254, 136);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -188,41 +188,19 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(476, 243);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 289);
             this.tableLayoutPanel1.TabIndex = 23;
             // 
-            // lblEmail
+            // lblLastName
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(3, 96);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblEmail.Size = new System.Drawing.Size(63, 33);
-            this.lblEmail.TabIndex = 24;
-            this.lblEmail.Text = "Email:";
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(3, 144);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblPassword.Size = new System.Drawing.Size(97, 33);
-            this.lblPassword.TabIndex = 24;
-            this.lblPassword.Text = "Password:";
-            // 
-            // lblConfirmPassword
-            // 
-            this.lblConfirmPassword.AutoSize = true;
-            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmPassword.Location = new System.Drawing.Point(3, 192);
-            this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblConfirmPassword.Size = new System.Drawing.Size(172, 33);
-            this.lblConfirmPassword.TabIndex = 24;
-            this.lblConfirmPassword.Text = "Confirm Password:";
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastName.Location = new System.Drawing.Point(3, 57);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblLastName.Size = new System.Drawing.Size(107, 33);
+            this.lblLastName.TabIndex = 26;
+            this.lblLastName.Text = "Last Name:";
             // 
             // lblFirstName
             // 
@@ -235,22 +213,44 @@
             this.lblFirstName.TabIndex = 25;
             this.lblFirstName.Text = "First Name:";
             // 
-            // lblLastName
+            // lblConfirmPassword
             // 
-            this.lblLastName.AutoSize = true;
-            this.lblLastName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(3, 48);
-            this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblLastName.Size = new System.Drawing.Size(107, 33);
-            this.lblLastName.TabIndex = 26;
-            this.lblLastName.Text = "Last Name:";
+            this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmPassword.Location = new System.Drawing.Point(3, 228);
+            this.lblConfirmPassword.Name = "lblConfirmPassword";
+            this.lblConfirmPassword.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(172, 33);
+            this.lblConfirmPassword.TabIndex = 24;
+            this.lblConfirmPassword.Text = "Confirm Password:";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(3, 171);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblPassword.Size = new System.Drawing.Size(97, 33);
+            this.lblPassword.TabIndex = 24;
+            this.lblPassword.Text = "Password:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(3, 114);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblEmail.Size = new System.Drawing.Size(63, 33);
+            this.lblEmail.TabIndex = 24;
+            this.lblEmail.Text = "Email:";
             // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(997, 598);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
@@ -258,6 +258,7 @@
             this.Controls.Add(this.lblRegister);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Register";
             this.Text = "Register";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

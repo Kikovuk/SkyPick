@@ -12,27 +12,32 @@ namespace SkyPick
 {
     public partial class AdminMainWindow : Form
     {
-        private Login _login;
+        private readonly User currentUser;
         public AdminMainWindow()
         {
             InitializeComponent();
         }
 
-        public AdminMainWindow(Login login)
+        public AdminMainWindow(User currentUser)
         {
             InitializeComponent();
-            _login = login;
+            this.currentUser = currentUser;
         }
 
-        private void AdminMainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnManageUsers_Click(object sender, EventArgs e)
         {
-            _login.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
+            Hide();
             ManageUsers manageUsers = new ManageUsers();
-            manageUsers.Show();
+            manageUsers.ShowDialog();
+            Close();
+        }
+
+        private void btnManageFlights_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ManageFlights manageFlights = new ManageFlights();
+            manageFlights.ShowDialog();
+            Close();
         }
     }
 }

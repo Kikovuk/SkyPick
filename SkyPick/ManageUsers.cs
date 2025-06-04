@@ -22,12 +22,10 @@ namespace SkyPick
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            if(!Utils.FormIsOpen("AddUser"))
-            {
-                var addUser = new AddUser();
-                addUser.ShowDialog();
-                this.Hide();
-            }
+            Hide();
+            AddUser addUser = new AddUser(this);
+            addUser.ShowDialog();
+            Close();
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)
@@ -105,6 +103,14 @@ namespace SkyPick
             }).ToList();
 
             gvUserList.DataSource = users;
+        }
+
+        private void pbBackArrow_Click(object sender, EventArgs e)
+        {
+            Hide();
+            AdminMainWindow adminMainWindow = new AdminMainWindow();
+            adminMainWindow.ShowDialog();
+            Close();
         }
     }
 }

@@ -31,14 +31,6 @@ namespace SkyPick
                 tbCurrentPassword.PasswordChar = '*';
         }
 
-        private void btnShowNewPassword_Click(object sender, EventArgs e)
-        {
-            if (tbNewPassword.PasswordChar != '\0')
-                tbNewPassword.PasswordChar = '\0';
-            else
-                tbNewPassword.PasswordChar = '*';
-        }
-
         private void btnResetPassword_Click(object sender, EventArgs e)
         {
             var currentPassword = tbCurrentPassword.Text;
@@ -109,6 +101,30 @@ namespace SkyPick
             {
                 tbNewPassword.BackColor = Color.MistyRose;
             }
+        }
+
+        private void pbBackArrow_Click(object sender, EventArgs e)
+        {
+            Hide();
+            PassengerMainWindow passengerMainWindow = new PassengerMainWindow();
+            passengerMainWindow.ShowDialog();
+            Close();
+        }
+
+        private void chShowCurrentPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tbCurrentPassword.PasswordChar != '\0')
+                tbCurrentPassword.PasswordChar = '\0';
+            else
+                tbCurrentPassword.PasswordChar = '*';
+        }
+
+        private void cbShowNewPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tbNewPassword.PasswordChar != '\0')
+                tbNewPassword.PasswordChar = '\0';
+            else
+                tbNewPassword.PasswordChar = '*';
         }
     }
 }

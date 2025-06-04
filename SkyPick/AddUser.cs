@@ -15,12 +15,13 @@ namespace SkyPick
 
         private readonly SkyPickEntities _db;
         private ManageUsers _manageUsers;
-        public AddUser()
+        public AddUser(ManageUsers manageUsers)
         {
             InitializeComponent();
             _db = new SkyPickEntities();
             var roles = new List<string> { "admin", "passenger" };
             cbRoles.DataSource = roles;
+            _manageUsers = manageUsers;
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
@@ -44,11 +45,17 @@ namespace SkyPick
 
             MessageBox.Show("New user added successfully");
             _manageUsers.PopulateGrid();
+            Hide();
+            ManageUsers manageUsers = new ManageUsers();
+            manageUsers.ShowDialog();
             Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            Hide();
+            ManageUsers manageUsers = new ManageUsers();
+            manageUsers.ShowDialog();
             Close();
         }
     }
