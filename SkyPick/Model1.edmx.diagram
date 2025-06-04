@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c8e8236c83e4b2ba59c9ad528ded423" Name="Diagram1">
+        <EntityTypeShape EntityType="SkyPickModel.Airport" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="SkyPickModel.City" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="SkyPickModel.Country" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="SkyPickModel.Flight" Width="1.5" PointX="7.5" PointY="5" />
+        <EntityTypeShape EntityType="SkyPickModel.Plane" Width="1.5" PointX="5.25" PointY="9.625" />
+        <EntityTypeShape EntityType="SkyPickModel.PlaneModel" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="SkyPickModel.Reservation" Width="1.5" PointX="9.75" PointY="5.25" />
+        <EntityTypeShape EntityType="SkyPickModel.Seat" Width="1.5" PointX="7.5" PointY="0.875" />
+        <EntityTypeShape EntityType="SkyPickModel.SeatClass" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="SkyPickModel.Ticket" Width="1.5" PointX="12" PointY="5.625" />
+        <EntityTypeShape EntityType="SkyPickModel.User" Width="1.5" PointX="7.5" PointY="10" />
+        <AssociationConnector Association="SkyPickModel.FK__Airport__CityID__656C112C" />
+        <AssociationConnector Association="SkyPickModel.FK__Flight__ArrivalA__6EF57B66" />
+        <AssociationConnector Association="SkyPickModel.FK__Flight__Departur__6E01572D" />
+        <AssociationConnector Association="SkyPickModel.FK__City__CountryID__628FA481" />
+        <AssociationConnector Association="SkyPickModel.FK__Flight__PlaneID__6D0D32F4" />
+        <AssociationConnector Association="SkyPickModel.FK__Reservati__Fligh__7C4F7684" />
+        <AssociationConnector Association="SkyPickModel.FK__Plane__ModelID__6A30C649" />
+        <AssociationConnector Association="SkyPickModel.FK__Seat__PlaneID__778AC167" />
+        <AssociationConnector Association="SkyPickModel.FK__Reservati__SeatI__7D439ABD" />
+        <AssociationConnector Association="SkyPickModel.FK__Reservati__UserI__7B5B524B" />
+        <AssociationConnector Association="SkyPickModel.FK__Ticket__Reservat__01142BA1" />
+        <AssociationConnector Association="SkyPickModel.FK__Seat__SeatClassI__787EE5A0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

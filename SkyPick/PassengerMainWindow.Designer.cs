@@ -1,6 +1,6 @@
 ﻿namespace SkyPick
 {
-    partial class Form1
+    partial class PassengerMainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // PassengerMainWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Name = "PassengerMainWindow";
+            this.Text = "PassengerMainWindow";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PassengerMainWindow_FormClosing);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-

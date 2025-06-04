@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SkyPickModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Airport">
+          <Key>
+            <PropertyRef Name="AirportID" />
+          </Key>
+          <Property Name="AirportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CityID" Type="int" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="FlightID" />
+          </Key>
+          <Property Name="FlightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaneID" Type="int" />
+          <Property Name="DepartureAirportID" Type="int" />
+          <Property Name="ArrivalAirportID" Type="int" />
+          <Property Name="DepartureTime" Type="datetime" />
+          <Property Name="ArrivalTime" Type="datetime" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Plane">
+          <Key>
+            <PropertyRef Name="PlaneID" />
+          </Key>
+          <Property Name="PlaneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModelID" Type="int" />
+        </EntityType>
+        <EntityType Name="PlaneModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SeatCount" Type="int" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="FlightID" Type="int" />
+          <Property Name="SeatID" Type="int" />
+          <Property Name="ReservationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="SeatID" />
+          </Key>
+          <Property Name="SeatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaneID" Type="int" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="SeatClassID" Type="int" />
+        </EntityType>
+        <EntityType Name="SeatClass">
+          <Key>
+            <PropertyRef Name="SeatClassID" />
+          </Key>
+          <Property Name="SeatClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservationID" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IssuedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="Role" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Airport__CityID__656C112C">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Airport" Type="Self.Airport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Airport">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__City__CountryID__628FA481">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flight__ArrivalA__6EF57B66">
+          <End Role="Airport" Type="Self.Airport" Multiplicity="0..1" />
+          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Airport">
+              <PropertyRef Name="AirportID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="ArrivalAirportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flight__Departur__6E01572D">
+          <End Role="Airport" Type="Self.Airport" Multiplicity="0..1" />
+          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Airport">
+              <PropertyRef Name="AirportID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="DepartureAirportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flight__PlaneID__6D0D32F4">
+          <End Role="Plane" Type="Self.Plane" Multiplicity="0..1" />
+          <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plane">
+              <PropertyRef Name="PlaneID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="PlaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plane__ModelID__6A30C649">
+          <End Role="PlaneModel" Type="Self.PlaneModel" Multiplicity="0..1" />
+          <End Role="Plane" Type="Self.Plane" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlaneModel">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Plane">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Fligh__7C4F7684">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="FlightID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="FlightID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__SeatI__7D439ABD">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="SeatID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="SeatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__UserI__7B5B524B">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seat__PlaneID__778AC167">
+          <End Role="Plane" Type="Self.Plane" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plane">
+              <PropertyRef Name="PlaneID" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="PlaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seat__SeatClassI__787EE5A0">
+          <End Role="SeatClass" Type="Self.SeatClass" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeatClass">
+              <PropertyRef Name="SeatClassID" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="SeatClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket__Reservat__01142BA1">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="ReservationID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ReservationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkyPickModelStoreContainer">
+          <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plane" EntityType="Self.Plane" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaneModel" EntityType="Self.PlaneModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeatClass" EntityType="Self.SeatClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Airport__CityID__656C112C" Association="Self.FK__Airport__CityID__656C112C">
+            <End Role="City" EntitySet="City" />
+            <End Role="Airport" EntitySet="Airport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__City__CountryID__628FA481" Association="Self.FK__City__CountryID__628FA481">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flight__ArrivalA__6EF57B66" Association="Self.FK__Flight__ArrivalA__6EF57B66">
+            <End Role="Airport" EntitySet="Airport" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flight__Departur__6E01572D" Association="Self.FK__Flight__Departur__6E01572D">
+            <End Role="Airport" EntitySet="Airport" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flight__PlaneID__6D0D32F4" Association="Self.FK__Flight__PlaneID__6D0D32F4">
+            <End Role="Plane" EntitySet="Plane" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plane__ModelID__6A30C649" Association="Self.FK__Plane__ModelID__6A30C649">
+            <End Role="PlaneModel" EntitySet="PlaneModel" />
+            <End Role="Plane" EntitySet="Plane" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Fligh__7C4F7684" Association="Self.FK__Reservati__Fligh__7C4F7684">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__SeatI__7D439ABD" Association="Self.FK__Reservati__SeatI__7D439ABD">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__UserI__7B5B524B" Association="Self.FK__Reservati__UserI__7B5B524B">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seat__PlaneID__778AC167" Association="Self.FK__Seat__PlaneID__778AC167">
+            <End Role="Plane" EntitySet="Plane" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seat__SeatClassI__787EE5A0" Association="Self.FK__Seat__SeatClassI__787EE5A0">
+            <End Role="SeatClass" EntitySet="SeatClass" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket__Reservat__01142BA1" Association="Self.FK__Ticket__Reservat__01142BA1">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkyPickModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SkyPickEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Airport" EntityType="SkyPickModel.Airport" />
+          <EntitySet Name="City" EntityType="SkyPickModel.City" />
+          <EntitySet Name="Country" EntityType="SkyPickModel.Country" />
+          <EntitySet Name="Flight" EntityType="SkyPickModel.Flight" />
+          <EntitySet Name="Plane" EntityType="SkyPickModel.Plane" />
+          <EntitySet Name="PlaneModel" EntityType="SkyPickModel.PlaneModel" />
+          <EntitySet Name="Reservation" EntityType="SkyPickModel.Reservation" />
+          <EntitySet Name="Seat" EntityType="SkyPickModel.Seat" />
+          <EntitySet Name="SeatClass" EntityType="SkyPickModel.SeatClass" />
+          <EntitySet Name="Ticket" EntityType="SkyPickModel.Ticket" />
+          <EntitySet Name="User" EntityType="SkyPickModel.User" />
+          <AssociationSet Name="FK__Airport__CityID__656C112C" Association="SkyPickModel.FK__Airport__CityID__656C112C">
+            <End Role="City" EntitySet="City" />
+            <End Role="Airport" EntitySet="Airport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flight__ArrivalA__6EF57B66" Association="SkyPickModel.FK__Flight__ArrivalA__6EF57B66">
+            <End Role="Airport" EntitySet="Airport" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flight__Departur__6E01572D" Association="SkyPickModel.FK__Flight__Departur__6E01572D">
+            <End Role="Airport" EntitySet="Airport" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__City__CountryID__628FA481" Association="SkyPickModel.FK__City__CountryID__628FA481">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flight__PlaneID__6D0D32F4" Association="SkyPickModel.FK__Flight__PlaneID__6D0D32F4">
+            <End Role="Plane" EntitySet="Plane" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Fligh__7C4F7684" Association="SkyPickModel.FK__Reservati__Fligh__7C4F7684">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plane__ModelID__6A30C649" Association="SkyPickModel.FK__Plane__ModelID__6A30C649">
+            <End Role="PlaneModel" EntitySet="PlaneModel" />
+            <End Role="Plane" EntitySet="Plane" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seat__PlaneID__778AC167" Association="SkyPickModel.FK__Seat__PlaneID__778AC167">
+            <End Role="Plane" EntitySet="Plane" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__SeatI__7D439ABD" Association="SkyPickModel.FK__Reservati__SeatI__7D439ABD">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__UserI__7B5B524B" Association="SkyPickModel.FK__Reservati__UserI__7B5B524B">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket__Reservat__01142BA1" Association="SkyPickModel.FK__Ticket__Reservat__01142BA1">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seat__SeatClassI__787EE5A0" Association="SkyPickModel.FK__Seat__SeatClassI__787EE5A0">
+            <End Role="SeatClass" EntitySet="SeatClass" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Airport">
+          <Key>
+            <PropertyRef Name="AirportID" />
+          </Key>
+          <Property Name="AirportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="SkyPickModel.FK__Airport__CityID__656C112C" FromRole="Airport" ToRole="City" />
+          <NavigationProperty Name="Flight" Relationship="SkyPickModel.FK__Flight__ArrivalA__6EF57B66" FromRole="Airport" ToRole="Flight" />
+          <NavigationProperty Name="Flight1" Relationship="SkyPickModel.FK__Flight__Departur__6E01572D" FromRole="Airport" ToRole="Flight" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="Airport" Relationship="SkyPickModel.FK__Airport__CityID__656C112C" FromRole="City" ToRole="Airport" />
+          <NavigationProperty Name="Country" Relationship="SkyPickModel.FK__City__CountryID__628FA481" FromRole="City" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="SkyPickModel.FK__City__CountryID__628FA481" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="FlightID" />
+          </Key>
+          <Property Name="FlightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaneID" Type="Int32" />
+          <Property Name="DepartureAirportID" Type="Int32" />
+          <Property Name="ArrivalAirportID" Type="Int32" />
+          <Property Name="DepartureTime" Type="DateTime" Precision="3" />
+          <Property Name="ArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Airport" Relationship="SkyPickModel.FK__Flight__ArrivalA__6EF57B66" FromRole="Flight" ToRole="Airport" />
+          <NavigationProperty Name="Airport1" Relationship="SkyPickModel.FK__Flight__Departur__6E01572D" FromRole="Flight" ToRole="Airport" />
+          <NavigationProperty Name="Plane" Relationship="SkyPickModel.FK__Flight__PlaneID__6D0D32F4" FromRole="Flight" ToRole="Plane" />
+          <NavigationProperty Name="Reservation" Relationship="SkyPickModel.FK__Reservati__Fligh__7C4F7684" FromRole="Flight" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Plane">
+          <Key>
+            <PropertyRef Name="PlaneID" />
+          </Key>
+          <Property Name="PlaneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModelID" Type="Int32" />
+          <NavigationProperty Name="Flight" Relationship="SkyPickModel.FK__Flight__PlaneID__6D0D32F4" FromRole="Plane" ToRole="Flight" />
+          <NavigationProperty Name="PlaneModel" Relationship="SkyPickModel.FK__Plane__ModelID__6A30C649" FromRole="Plane" ToRole="PlaneModel" />
+          <NavigationProperty Name="Seat" Relationship="SkyPickModel.FK__Seat__PlaneID__778AC167" FromRole="Plane" ToRole="Seat" />
+        </EntityType>
+        <EntityType Name="PlaneModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SeatCount" Type="Int32" />
+          <NavigationProperty Name="Plane" Relationship="SkyPickModel.FK__Plane__ModelID__6A30C649" FromRole="PlaneModel" ToRole="Plane" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="FlightID" Type="Int32" />
+          <Property Name="SeatID" Type="Int32" />
+          <Property Name="ReservationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Flight" Relationship="SkyPickModel.FK__Reservati__Fligh__7C4F7684" FromRole="Reservation" ToRole="Flight" />
+          <NavigationProperty Name="Seat" Relationship="SkyPickModel.FK__Reservati__SeatI__7D439ABD" FromRole="Reservation" ToRole="Seat" />
+          <NavigationProperty Name="User" Relationship="SkyPickModel.FK__Reservati__UserI__7B5B524B" FromRole="Reservation" ToRole="User" />
+          <NavigationProperty Name="Ticket" Relationship="SkyPickModel.FK__Ticket__Reservat__01142BA1" FromRole="Reservation" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="SeatID" />
+          </Key>
+          <Property Name="SeatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaneID" Type="Int32" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SeatClassID" Type="Int32" />
+          <NavigationProperty Name="Plane" Relationship="SkyPickModel.FK__Seat__PlaneID__778AC167" FromRole="Seat" ToRole="Plane" />
+          <NavigationProperty Name="Reservation" Relationship="SkyPickModel.FK__Reservati__SeatI__7D439ABD" FromRole="Seat" ToRole="Reservation" />
+          <NavigationProperty Name="SeatClass" Relationship="SkyPickModel.FK__Seat__SeatClassI__787EE5A0" FromRole="Seat" ToRole="SeatClass" />
+        </EntityType>
+        <EntityType Name="SeatClass">
+          <Key>
+            <PropertyRef Name="SeatClassID" />
+          </Key>
+          <Property Name="SeatClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Seat" Relationship="SkyPickModel.FK__Seat__SeatClassI__787EE5A0" FromRole="SeatClass" ToRole="Seat" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservationID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IssuedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Reservation" Relationship="SkyPickModel.FK__Ticket__Reservat__01142BA1" FromRole="Ticket" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reservation" Relationship="SkyPickModel.FK__Reservati__UserI__7B5B524B" FromRole="User" ToRole="Reservation" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Airport__CityID__656C112C">
+          <End Type="SkyPickModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Airport" Role="Airport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Airport">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flight__ArrivalA__6EF57B66">
+          <End Type="SkyPickModel.Airport" Role="Airport" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Flight" Role="Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Airport">
+              <PropertyRef Name="AirportID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="ArrivalAirportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flight__Departur__6E01572D">
+          <End Type="SkyPickModel.Airport" Role="Airport" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Flight" Role="Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Airport">
+              <PropertyRef Name="AirportID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="DepartureAirportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__City__CountryID__628FA481">
+          <End Type="SkyPickModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="SkyPickModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flight__PlaneID__6D0D32F4">
+          <End Type="SkyPickModel.Plane" Role="Plane" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Flight" Role="Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plane">
+              <PropertyRef Name="PlaneID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="PlaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Fligh__7C4F7684">
+          <End Type="SkyPickModel.Flight" Role="Flight" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="FlightID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="FlightID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plane__ModelID__6A30C649">
+          <End Type="SkyPickModel.PlaneModel" Role="PlaneModel" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Plane" Role="Plane" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlaneModel">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Plane">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seat__PlaneID__778AC167">
+          <End Type="SkyPickModel.Plane" Role="Plane" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Seat" Role="Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plane">
+              <PropertyRef Name="PlaneID" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="PlaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__SeatI__7D439ABD">
+          <End Type="SkyPickModel.Seat" Role="Seat" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="SeatID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="SeatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__UserI__7B5B524B">
+          <End Type="SkyPickModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket__Reservat__01142BA1">
+          <End Type="SkyPickModel.Reservation" Role="Reservation" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="ReservationID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ReservationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seat__SeatClassI__787EE5A0">
+          <End Type="SkyPickModel.SeatClass" Role="SeatClass" Multiplicity="0..1" />
+          <End Type="SkyPickModel.Seat" Role="Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeatClass">
+              <PropertyRef Name="SeatClassID" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="SeatClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SkyPickModelStoreContainer" CdmEntityContainer="SkyPickEntities">
+          <EntitySetMapping Name="Airport">
+            <EntityTypeMapping TypeName="SkyPickModel.Airport">
+              <MappingFragment StoreEntitySet="Airport">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AirportID" ColumnName="AirportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="SkyPickModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="SkyPickModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight">
+            <EntityTypeMapping TypeName="SkyPickModel.Flight">
+              <MappingFragment StoreEntitySet="Flight">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="ArrivalAirportID" ColumnName="ArrivalAirportID" />
+                <ScalarProperty Name="DepartureAirportID" ColumnName="DepartureAirportID" />
+                <ScalarProperty Name="PlaneID" ColumnName="PlaneID" />
+                <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+                <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plane">
+            <EntityTypeMapping TypeName="SkyPickModel.Plane">
+              <MappingFragment StoreEntitySet="Plane">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PlaneID" ColumnName="PlaneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlaneModel">
+            <EntityTypeMapping TypeName="SkyPickModel.PlaneModel">
+              <MappingFragment StoreEntitySet="PlaneModel">
+                <ScalarProperty Name="SeatCount" ColumnName="SeatCount" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="SkyPickModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+                <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seat">
+            <EntityTypeMapping TypeName="SkyPickModel.Seat">
+              <MappingFragment StoreEntitySet="Seat">
+                <ScalarProperty Name="SeatClassID" ColumnName="SeatClassID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="PlaneID" ColumnName="PlaneID" />
+                <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeatClass">
+            <EntityTypeMapping TypeName="SkyPickModel.SeatClass">
+              <MappingFragment StoreEntitySet="SeatClass">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SeatClassID" ColumnName="SeatClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="SkyPickModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="IssuedDate" ColumnName="IssuedDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SkyPickModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
