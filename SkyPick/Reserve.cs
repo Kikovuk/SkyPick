@@ -20,6 +20,26 @@ namespace SkyPick
             this.currentUser = currentUser;
             LoadInitialData();
             WireUpEvents();
+            cbDepCountry.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbDepCountry.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbDepCity.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbDepCity.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbDepAirport.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbDepAirport.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbArrCountry.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbArrCountry.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbArrCity.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbArrCity.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbArrAirport.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbArrAirport.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbSeatClass.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbSeatClass.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void LoadInitialData()

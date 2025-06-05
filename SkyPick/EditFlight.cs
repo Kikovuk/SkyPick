@@ -113,6 +113,12 @@ namespace SkyPick
                 return;
             }
 
+            if (tpDepartureTime.Value <= DateTime.Now)
+            {
+                MessageBox.Show("Departure time must be set in the future.");
+                return;
+            }
+
             TimeSpan duration = tpArrivalTime.Value - tpDepartureTime.Value;
             if (duration.TotalMinutes < 30)
             {
