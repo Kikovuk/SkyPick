@@ -37,7 +37,7 @@ namespace SkyPick
         {
             if (nudUserID.Value == 0)
             {
-                MessageBox.Show("Morate uneti korisnički ID!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You need to enter User ID!", "Error:", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

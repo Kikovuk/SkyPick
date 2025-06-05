@@ -123,11 +123,11 @@
             this.gvFlightList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gvFlightList.BackgroundColor = System.Drawing.Color.White;
             this.gvFlightList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvFlightList.Location = new System.Drawing.Point(69, 141);
+            this.gvFlightList.Location = new System.Drawing.Point(26, 141);
             this.gvFlightList.Name = "gvFlightList";
             this.gvFlightList.RowHeadersWidth = 51;
             this.gvFlightList.RowTemplate.Height = 24;
-            this.gvFlightList.Size = new System.Drawing.Size(861, 322);
+            this.gvFlightList.Size = new System.Drawing.Size(948, 322);
             this.gvFlightList.TabIndex = 12;
             // 
             // ManageFlights

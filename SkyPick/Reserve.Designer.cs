@@ -51,6 +51,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pbBackArrow = new System.Windows.Forms.PictureBox();
+            this.dtpDepartureDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpDepartureDateTo = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlights)).BeginInit();
@@ -83,28 +87,28 @@
             // 
             // btnSearchFlights
             // 
-            this.btnSearchFlights.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSearchFlights.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchFlights.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnSearchFlights.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnSearchFlights.Font = new System.Drawing.Font("Segoe UI", 15.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchFlights.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.btnSearchFlights.Location = new System.Drawing.Point(616, 233);
+            this.btnSearchFlights.Location = new System.Drawing.Point(614, 518);
             this.btnSearchFlights.Name = "btnSearchFlights";
-            this.btnSearchFlights.Size = new System.Drawing.Size(145, 48);
+            this.btnSearchFlights.Size = new System.Drawing.Size(156, 60);
             this.btnSearchFlights.TabIndex = 14;
             this.btnSearchFlights.Text = "Search ";
             this.btnSearchFlights.UseVisualStyleBackColor = false;
             // 
             // btnReserve
             // 
-            this.btnReserve.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnReserve.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReserve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.btnReserve.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnReserve.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReserve.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
-            this.btnReserve.Location = new System.Drawing.Point(798, 233);
+            this.btnReserve.Location = new System.Drawing.Point(787, 518);
             this.btnReserve.Name = "btnReserve";
-            this.btnReserve.Size = new System.Drawing.Size(140, 48);
+            this.btnReserve.Size = new System.Drawing.Size(151, 60);
             this.btnReserve.TabIndex = 17;
             this.btnReserve.Text = "Reserve";
             this.btnReserve.UseVisualStyleBackColor = false;
@@ -174,7 +178,7 @@
             this.cbSeatClass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbSeatClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSeatClass.FormattingEnabled = true;
-            this.cbSeatClass.Location = new System.Drawing.Point(603, 169);
+            this.cbSeatClass.Location = new System.Drawing.Point(598, 170);
             this.cbSeatClass.Name = "cbSeatClass";
             this.cbSeatClass.Size = new System.Drawing.Size(167, 33);
             this.cbSeatClass.TabIndex = 24;
@@ -192,11 +196,11 @@
             // 
             this.dgvFlights.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvFlights.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFlights.Location = new System.Drawing.Point(12, 287);
+            this.dgvFlights.Location = new System.Drawing.Point(27, 287);
             this.dgvFlights.Name = "dgvFlights";
             this.dgvFlights.RowHeadersWidth = 51;
             this.dgvFlights.RowTemplate.Height = 24;
-            this.dgvFlights.Size = new System.Drawing.Size(926, 312);
+            this.dgvFlights.Size = new System.Drawing.Size(559, 300);
             this.dgvFlights.TabIndex = 26;
             // 
             // label1
@@ -270,7 +274,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(623, 125);
+            this.label7.Location = new System.Drawing.Point(624, 125);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 25);
             this.label7.TabIndex = 33;
@@ -299,11 +303,55 @@
             this.pbBackArrow.TabStop = false;
             this.pbBackArrow.Click += new System.EventHandler(this.pbBackArrow_Click);
             // 
+            // dtpDepartureDateFrom
+            // 
+            this.dtpDepartureDateFrom.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpDepartureDateFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDepartureDateFrom.Location = new System.Drawing.Point(605, 361);
+            this.dtpDepartureDateFrom.Name = "dtpDepartureDateFrom";
+            this.dtpDepartureDateFrom.Size = new System.Drawing.Size(333, 26);
+            this.dtpDepartureDateFrom.TabIndex = 36;
+            // 
+            // dtpDepartureDateTo
+            // 
+            this.dtpDepartureDateTo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpDepartureDateTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDepartureDateTo.Location = new System.Drawing.Point(605, 454);
+            this.dtpDepartureDateTo.Name = "dtpDepartureDateTo";
+            this.dtpDepartureDateTo.Size = new System.Drawing.Size(333, 26);
+            this.dtpDepartureDateTo.TabIndex = 37;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(683, 318);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(203, 25);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Departure Time From:";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(692, 411);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(182, 25);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Departure Time To:";
+            // 
             // Reserve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 611);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dtpDepartureDateTo);
+            this.Controls.Add(this.dtpDepartureDateFrom);
             this.Controls.Add(this.pbBackArrow);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -361,5 +409,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pbBackArrow;
+        private System.Windows.Forms.DateTimePicker dtpDepartureDateFrom;
+        private System.Windows.Forms.DateTimePicker dtpDepartureDateTo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

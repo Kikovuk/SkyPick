@@ -46,6 +46,9 @@ namespace SkyPick
         {
             var countries = _db.Country.OrderBy(c => c.Name).ToList();
 
+            dtpDepartureDateFrom.ShowCheckBox = true;
+            dtpDepartureDateTo.ShowCheckBox = true;
+
             cbDepCountry.DataSource = countries;
             cbDepCountry.DisplayMember = "Name";
             cbDepCountry.ValueMember = "CountryID";
@@ -150,6 +153,42 @@ namespace SkyPick
                 airportCb.SelectedIndex = -1;
             }
         }
+        /* private void BtnSearchFlights_Click(object sender, EventArgs e)
+         {
+             if (cbDepAirport.SelectedValue == null || cbArrAirport.SelectedValue == null)
+             {
+                 MessageBox.Show("Please select both departure and arrival airports.");
+                 return;
+             }
+
+             int depAirportId = (int)cbDepAirport.SelectedValue;
+             int arrAirportId = (int)cbArrAirport.SelectedValue;
+
+             if (depAirportId == arrAirportId)
+             {
+                 MessageBox.Show("Departure and arrival airports cannot be the same.");
+                 return;
+             }
+
+             var flights = _db.Flight
+                 .Where(f => f.DepartureAirportID == depAirportId && f.ArrivalAirportID == arrAirportId)
+                 .Select(f => new
+                 {
+                     f.FlightID,
+                     f.FlightNumber,
+                     Departure = f.DepartureTime,
+                     Arrival = f.ArrivalTime,
+                     Price = f.Price
+                 })
+                 .OrderBy(f => f.Departure)
+                 .ToList();
+
+             dgvFlights.DataSource = flights;
+
+             if (flights.Count == 0)
+                 MessageBox.Show("No flights found for the selected route.");
+         }
+        */
         private void BtnSearchFlights_Click(object sender, EventArgs e)
         {
             if (cbDepAirport.SelectedValue == null || cbArrAirport.SelectedValue == null)
@@ -167,8 +206,23 @@ namespace SkyPick
                 return;
             }
 
-            var flights = _db.Flight
-                .Where(f => f.DepartureAirportID == depAirportId && f.ArrivalAirportID == arrAirportId)
+            var query = _db.Flight
+                .Where(f => f.DepartureAirportID == depAirportId && f.ArrivalAirportID == arrAirportId);
+
+            // Dodaj filtriranje po datumu ako je čekirano
+            if (dtpDepartureDateFrom.Checked)
+            {
+                DateTime fromDate = dtpDepartureDateFrom.Value.Date;
+                query = query.Where(f => f.DepartureTime >= fromDate);
+            }
+
+            if (dtpDepartureDateTo.Checked)
+            {
+                DateTime toDate = dtpDepartureDateTo.Value.Date.AddDays(1).AddTicks(-1); // kraj tog dana
+                query = query.Where(f => f.DepartureTime <= toDate);
+            }
+
+            var flights = query
                 .Select(f => new
                 {
                     f.FlightID,
@@ -185,6 +239,7 @@ namespace SkyPick
             if (flights.Count == 0)
                 MessageBox.Show("No flights found for the selected route.");
         }
+
 
         private void BtnReserve_Click(object sender, EventArgs e)
         {
