@@ -165,6 +165,7 @@
             // 
             // chShowCurrentPassword
             // 
+            this.chShowCurrentPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chShowCurrentPassword.AutoSize = true;
             this.chShowCurrentPassword.Location = new System.Drawing.Point(610, 248);
             this.chShowCurrentPassword.Name = "chShowCurrentPassword";
@@ -176,6 +177,7 @@
             // 
             // cbShowNewPassword
             // 
+            this.cbShowNewPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbShowNewPassword.AutoSize = true;
             this.cbShowNewPassword.Location = new System.Drawing.Point(610, 355);
             this.cbShowNewPassword.Name = "cbShowNewPassword";

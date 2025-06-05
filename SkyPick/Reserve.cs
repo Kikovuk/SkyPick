@@ -153,42 +153,6 @@ namespace SkyPick
                 airportCb.SelectedIndex = -1;
             }
         }
-        /* private void BtnSearchFlights_Click(object sender, EventArgs e)
-         {
-             if (cbDepAirport.SelectedValue == null || cbArrAirport.SelectedValue == null)
-             {
-                 MessageBox.Show("Please select both departure and arrival airports.");
-                 return;
-             }
-
-             int depAirportId = (int)cbDepAirport.SelectedValue;
-             int arrAirportId = (int)cbArrAirport.SelectedValue;
-
-             if (depAirportId == arrAirportId)
-             {
-                 MessageBox.Show("Departure and arrival airports cannot be the same.");
-                 return;
-             }
-
-             var flights = _db.Flight
-                 .Where(f => f.DepartureAirportID == depAirportId && f.ArrivalAirportID == arrAirportId)
-                 .Select(f => new
-                 {
-                     f.FlightID,
-                     f.FlightNumber,
-                     Departure = f.DepartureTime,
-                     Arrival = f.ArrivalTime,
-                     Price = f.Price
-                 })
-                 .OrderBy(f => f.Departure)
-                 .ToList();
-
-             dgvFlights.DataSource = flights;
-
-             if (flights.Count == 0)
-                 MessageBox.Show("No flights found for the selected route.");
-         }
-        */
         private void BtnSearchFlights_Click(object sender, EventArgs e)
         {
             if (cbDepAirport.SelectedValue == null || cbArrAirport.SelectedValue == null)
@@ -209,7 +173,6 @@ namespace SkyPick
             var query = _db.Flight
                 .Where(f => f.DepartureAirportID == depAirportId && f.ArrivalAirportID == arrAirportId);
 
-            // Dodaj filtriranje po datumu ako je čekirano
             if (dtpDepartureDateFrom.Checked)
             {
                 DateTime fromDate = dtpDepartureDateFrom.Value.Date;
@@ -218,7 +181,7 @@ namespace SkyPick
 
             if (dtpDepartureDateTo.Checked)
             {
-                DateTime toDate = dtpDepartureDateTo.Value.Date.AddDays(1).AddTicks(-1); // kraj tog dana
+                DateTime toDate = dtpDepartureDateTo.Value.Date.AddDays(1).AddTicks(-1); 
                 query = query.Where(f => f.DepartureTime <= toDate);
             }
 

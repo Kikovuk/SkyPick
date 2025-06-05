@@ -106,7 +106,7 @@ namespace SkyPick
         private void pbBackArrow_Click(object sender, EventArgs e)
         {
             Hide();
-            PassengerMainWindow passengerMainWindow = new PassengerMainWindow();
+            PassengerMainWindow passengerMainWindow = new PassengerMainWindow(_user);
             passengerMainWindow.ShowDialog();
             Close();
         }
