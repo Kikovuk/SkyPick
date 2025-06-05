@@ -17,6 +17,8 @@ namespace SkyPick
         {
             InitializeComponent();
             _db = new SkyPickEntities();
+            gvFlightList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gvFlightList.MultiSelect = false;
         }
 
 
@@ -38,8 +40,22 @@ namespace SkyPick
 
         private void btnEditFlight_Click(object sender, EventArgs e)
         {
+            if (gvFlightList.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a flight to edit.");
+                return;
+            }
+
+            int flightId = (int)gvFlightList.SelectedRows[0].Cells["FlightID"].Value;
+            var flightToEdit = _db.Flight.Find(flightId);
+
+            if (flightToEdit == null)
+            {
+                MessageBox.Show("Selected flight does not exist.");
+                return;
+            }
             Hide();
-            EditFlight editFlight = new EditFlight(this);
+            EditFlight editFlight = new EditFlight(this, flightToEdit);
             editFlight.ShowDialog();
             Close();
         }
@@ -82,9 +98,9 @@ namespace SkyPick
             {
                 q.FlightID,
                 q.FlightNumber,
-                q.PlaneID,
-                q.DepartureAirportID,
-                q.ArrivalAirportID,
+                Plane = q.Plane.Code + " - " + q.Plane.PlaneModel.ModelName,
+                DepartureAirport = q.Airport.Code + " - " + q.Airport.Name,
+                ArrivalAirport = q.Airport1.Code + " - " + q.Airport1.Name,
                 q.DepartureTime,
                 q.ArrivalTime,
                 q.Price

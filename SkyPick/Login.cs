@@ -46,8 +46,10 @@ namespace SkyPick
                     {
                         if (user.Password == Utils.DefaultHashPassword())
                         {
+                            Hide();
                             var resetPassword = new ResetPassword(user);
-                            resetPassword.Show();
+                            resetPassword.ShowDialog();
+                            Close();
                         }
                         else
                         {
@@ -67,8 +69,6 @@ namespace SkyPick
                                 Close();
                             }
                         }
-
-                        Hide();
                     }
                     else
                     {

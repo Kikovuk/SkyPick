@@ -19,6 +19,18 @@ namespace SkyPick
         {
             InitializeComponent();
             LoadComboBoxes();
+
+            cbDepartureAirport.DropDownStyle = ComboBoxStyle.DropDown;
+            cbDepartureAirport.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbDepartureAirport.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbArrivalAirport.DropDownStyle = ComboBoxStyle.DropDown;
+            cbArrivalAirport.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbArrivalAirport.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbPlane.DropDownStyle = ComboBoxStyle.DropDown;
+            cbPlane.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbPlane.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         public AddFlight(ManageFlights manageFlights)
@@ -27,17 +39,62 @@ namespace SkyPick
             _manageFlight = manageFlights;
             _db = new SkyPickEntities();
             LoadComboBoxes();
+
+            cbDepartureAirport.DropDownStyle = ComboBoxStyle.DropDown;
+            cbDepartureAirport.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbDepartureAirport.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbArrivalAirport.DropDownStyle = ComboBoxStyle.DropDown;
+            cbArrivalAirport.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbArrivalAirport.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbPlane.DropDownStyle = ComboBoxStyle.DropDown;
+            cbPlane.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbPlane.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            tpDepartureTime.Format = DateTimePickerFormat.Custom;
+            tpDepartureTime.CustomFormat = "dd.MM.yyyy HH:mm";
+            tpDepartureTime.ShowUpDown = true;
+
+            tpArrivalTime.Format = DateTimePickerFormat.Custom;
+            tpArrivalTime.CustomFormat = "dd.MM.yyyy HH:mm";
+            tpArrivalTime.ShowUpDown = true;
+
+            LoadComboBoxes();
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-
-            if (tpDepartureTime.Value >= tpArrivalTime.Value)
+            if (cbDepartureAirport.SelectedItem == null)
             {
-                MessageBox.Show("Vrijeme dolaska mora biti nakon vremena poletanja.");
+                MessageBox.Show("Please select a valid departure airport from the list.");
                 return;
             }
 
+            if (cbArrivalAirport.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid arrival airport from the list.");
+                return;
+            }
+
+            if (cbPlane.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid plane from the list.");
+                return;
+            }
+
+            if (tpDepartureTime.Value >= tpArrivalTime.Value)
+            {
+                MessageBox.Show("Arrival time must be after departure time.");
+                return;
+            }
+
+            TimeSpan duration = tpArrivalTime.Value - tpDepartureTime.Value;
+            if (duration.TotalMinutes < 30)
+            {
+                MessageBox.Show("Flight duration must be at least 30 minutes.");
+                return;
+            }
 
             int planeId = (int)cbPlane.SelectedValue;
             int depId = (int)cbDepartureAirport.SelectedValue;
@@ -47,28 +104,16 @@ namespace SkyPick
             var depAirport = _db.Airport.Find(depId);
             var arrAirport = _db.Airport.Find(arrId);
 
-            if (plane == null)
-            {
-                MessageBox.Show("Avion sa zadatim ID-jem ne postoji.");
-                return;
-            }
-
-            if (depAirport == null || arrAirport == null)
-            {
-                MessageBox.Show("Jedan od aerodroma sa zadatim ID-jem ne postoji.");
-                return;
-            }
-
             if (depId == arrId)
             {
-                MessageBox.Show("Polazni i dolazni aerodrom ne mogu biti isti.");
+                MessageBox.Show("Departure and arrival airports cannot be the same.");
                 return;
             }
 
             decimal price;
             if (!decimal.TryParse(tbPrice.Text, out price))
             {
-                MessageBox.Show("Cena nije validan broj.");
+                MessageBox.Show("Price is not a valid number.");
                 return;
             }
 
@@ -86,7 +131,7 @@ namespace SkyPick
             _db.Flight.Add(newFlight);
             _db.SaveChanges();
 
-            MessageBox.Show("Let je uspjesno dodat.");
+            MessageBox.Show("Flight added successfully.");
 
             _manageFlight.PopulateGrid();
 

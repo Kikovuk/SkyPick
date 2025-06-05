@@ -39,5 +39,18 @@ namespace SkyPick
             manageFlights.ShowDialog();
             Close();
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Reports reports = new Reports();
+            reports.ShowDialog();
+            Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

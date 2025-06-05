@@ -182,6 +182,7 @@
             // 
             // chShowPassword
             // 
+            this.chShowPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chShowPassword.AutoSize = true;
             this.chShowPassword.Location = new System.Drawing.Point(720, 309);
             this.chShowPassword.Name = "chShowPassword";

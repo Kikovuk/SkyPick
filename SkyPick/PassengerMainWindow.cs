@@ -25,17 +25,26 @@ namespace SkyPick
 
         private void btnReserve_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            Reserve reservation = new Reserve(currentUser);
+            reservation.ShowDialog();
+            Close();
         }
 
         private void btnMyReservation_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            MyReservations myReservations = new MyReservations(currentUser);
+            myReservations.ShowDialog();
+            Close();
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            History history = new History(currentUser);
+            history.ShowDialog();
+            Close();
         }
 
         private void btnDeactivate_Click(object sender, EventArgs e)
@@ -71,5 +80,6 @@ namespace SkyPick
             resetPassword.ShowDialog();
             Close();
         }
+
     }
 }
